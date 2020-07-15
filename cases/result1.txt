@@ -1,0 +1,12 @@
+test_userinfo:用车日期:2020-07-10 00:00:00，2020-07-11 00:00:00====success
+test_userinfo:账号状态:正常====success
+test_userinfo:账号状态:正常====success
+test_userinfo:账号状态:正常====success
+test_userinfo:注册时间:2020-07-10 00:00:00，2020-07-11 00:00:00====success
+test_userinfo:欠费状态:有欠费====success
+test_userinfo:违约状态:有待处理违约====success
+test_userinfo:实名认证:未实名====success
+test_userinfo:骑行状态:骑行中====success
+test_userinfo:骑行状态:临时锁车====success
+test_userinfo:骑行状态:空闲====success
+test_userinfo:骑行状态:空闲====success
