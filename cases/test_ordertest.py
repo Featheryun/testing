@@ -27,6 +27,9 @@ class Test_order:
         ActionChains(wd).move_to_element(element).click(element1).perform()
         # element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]'))
         # element.click()
+        msg = ''
+        condition1 = ''
+        quiry1 = ''
         for key in kwargs.keys():
             condition = key
             quiry = kwargs[key]
@@ -89,7 +92,7 @@ class Test_order:
                 wd.switch_to.active_element.send_keys(Keys.ENTER)
             elif condition == '开始时间':
                 wd.find_element_by_id('createAt').click()
-                wd.implicitly_wait(10)
+                time.sleep(0.5)
                 starttime = quiry.split('，')[0]
                 endtime = quiry.split('，')[1]
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]').click()
@@ -101,66 +104,86 @@ class Test_order:
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(endtime)
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[2]/div/a[2]').click()
             wd.implicitly_wait(5)
-            wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[1]').click()
-            time.sleep(2)
-            msg = ''
-            try:
-                wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]')
-                Flag = True
-                print(1)
-            except:
-                Flag = False
-                print(2)
-            if Flag:
-                if condition == '订单编号':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]').text
-                elif condition == '用户姓名':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[3]').text
-                elif condition == '手机号码':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[4]').text
-                elif condition == '车辆编码':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[5]').text
-                elif condition == '终端编号':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[6]').text
-                elif condition == '是否应付':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[3]').text
-                    if float(msg) <= 0:
-                        msg = quiry
+            # wd.find_element_by_xpath(
+            #     '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[2]').click()
+            # time.sleep(8)
+            quiry1 = quiry1 + ';' + quiry
+            condition1 = condition1 + ';' + condition
+        wd.find_element_by_xpath(
+            '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[1]').click()
+        time.sleep(2)
+        try:
+            wd.find_element_by_xpath(
+                '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]')
+            Flag = True
+            print(1)
+        except:
+            Flag = False
+            print(2)
+        if Flag:
+            for key in kwargs.keys():
+                condition = key
+                quiry = kwargs[key]
+                if '订单编号' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]').text
+                elif '用户姓名' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[3]').text
+                elif '手机号码' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[4]').text
+                elif '车辆编码' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[5]').text
+                elif '终端编号' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[6]').text
+                elif '是否应付' == condition:
+                    msg1 = wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[3]').text
+                    if float(msg1) <= 0:
+                        msg = msg + ';' + quiry
                     else:
-                        msg = ''
-                elif condition == '订单状态':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[8]').text
-                elif condition == '异常状态':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[6]').text
-                elif condition == '用户类型':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[13]').text
-                elif condition == '结束状态':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[5]').text
-                elif condition == '取车位置':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[9]').text
-                    if msg != '':
-                        msg = quiry
+                        msg = msg + ';' + ''
+                elif '订单状态' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[8]').text
+                elif '异常状态' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[6]').text
+                elif '用户类型' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[13]').text
+                elif '结束状态' == condition:
+                    msg = msg + ';' + wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[5]').text
+                elif '取车位置' == condition:
+                    msg1 = wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[9]').text
+                    if msg1 != '':
+                        msg = msg + quiry
                     else:
-                        msg = ''
-                elif condition == '开始时间':
-                    msg = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[10]').text
-                    msg = datetime.date(*map(int, msg.split(' ')[0].split('-')))
+                        msg = msg + ''
+                elif '开始时间' == condition:
+                    msg1 = wd.find_element_by_xpath(
+                        '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[10]').text
+                    msg1 = datetime.date(*map(int, msg1.split(' ')[0].split('-')))
                     starttime = datetime.date(*map(int, starttime.split(' ')[0].split('-')))
                     endtime = datetime.date(*map(int, endtime.split(' ')[0].split('-')))
-                    if msg >= starttime and msg <= endtime:
-                        msg = quiry
+                    if msg1 >= starttime and msg1 <= endtime:
+                        msg = msg + ';' + quiry
                     else:
-                        msg = ''
-            else:
-                msg = ''
-            print(msg)
-            if quiry in msg:
-                print('test_order:'+condition+'=>'+quiry+'=======================>sucess', file=f)
-            else:
-                print('test_order:'+condition+'=>'+quiry+'=======================>fail', file=f)
-            wd.find_element_by_xpath(
-                '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[2]').click()
-            time.sleep(8)
+                        msg = msg + ';' + ''
+        else:
+            msg = msg + ';' + ''
+        print(msg)
+        print(condition1)
+        print(quiry1)
+        if quiry1 in msg:
+            print('test_order:' + condition1[1:] + '=>' + quiry1[1:] + '=======================>sucess', file=f)
+        else:
+            print('test_order:' + condition1[1:] + '=>' + quiry1[1:] + '=======================>fail', file=f)
     def test1(self, **kwargs):
         for key in kwargs.keys():
             print(key+kwargs[key])
@@ -178,4 +201,4 @@ if __name__ == '__main__':
     # test.test_order('非员工', '用户类型')
     # test.test_order('余额不足', '结束状态')
     # test.test1(a='b', c='d')
-    test.test_order(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00')
+    test.test_order(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
