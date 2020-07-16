@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from commom.login import Login
 from commom.zone_change import Zone_change
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 class Test_order:
     def test_order(self, quiry, condition):
@@ -21,6 +22,11 @@ class Test_order:
             element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="/order$Menu"]/li[1]'))
             element.click()
             wd.implicitly_wait(5)
+        element = wd.find_element_by_id('createAt')
+        element1 = wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]')
+        ActionChains(wd).move_to_element(element).click(element1).perform()
+        # element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]'))
+        # element.click()
         if condition == '订单编号':
             wd.find_element_by_id('id').send_keys(quiry)
         elif condition == '用户姓名':
@@ -148,7 +154,9 @@ class Test_order:
             print('test_order:'+condition+'=>'+quiry+'=======================>sucess', file=f)
         else:
             print('test_order:'+condition+'=>'+quiry+'=======================>fail', file=f)
-
+    def test1(self, **kwargs):
+        for key in kwargs.keys():
+            print(key+kwargs[key])
 
 if __name__ == '__main__':
     test = Test_order()
@@ -161,4 +169,5 @@ if __name__ == '__main__':
     # test.test_order('已结束', '订单状态')
     # test.test_order('无异常', '异常状态')
     # test.test_order('非员工', '用户类型')
-    test.test_order('通电时间未返回', '结束状态')
+    # test.test_order('余额不足', '结束状态')
+    test.test1(a='b', c='d')
