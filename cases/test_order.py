@@ -5,6 +5,7 @@ from commom.login import Login
 from commom.zone_change import Zone_change
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
+from util.str_to_dict import str_to_dict
 
 class Test_order:
     def test_order_singlequery(self, quiry, condition):
@@ -155,7 +156,8 @@ class Test_order:
         else:
             print('test_order:'+condition+'=>'+quiry+'=======================>fail', file=f)
 
-    def test_order_multiplequery(self, **kwargs):
+    def test_order_multiplequery(self, data):
+        data = str_to_dict(data)
         f = open('test_order_result.txt', 'a')
         login = Login()
         wd = login.login('15095859543', '123456')
@@ -178,9 +180,9 @@ class Test_order:
         msg = ''
         condition1 = ''
         quiry1 = ''
-        for key in kwargs.keys():
+        for key in data.keys():
             condition = key
-            quiry = kwargs[key]
+            quiry = data[key]
             if condition == '订单编号':
                 wd.find_element_by_id('id').send_keys(quiry)
             elif condition == '用户姓名':
@@ -241,8 +243,8 @@ class Test_order:
             elif condition == '开始时间':
                 wd.find_element_by_id('createAt').click()
                 time.sleep(0.5)
-                starttime = quiry.split('，')[0]
-                endtime = quiry.split('，')[1]
+                starttime = quiry.split(',')[0]
+                endtime = quiry.split(',')[1]
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]').click()
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[5]/td[5]').click()
                 wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(19*Keys.BACK_SPACE)
@@ -269,9 +271,9 @@ class Test_order:
             Flag = False
             print(2)
         if Flag:
-            for key in kwargs.keys():
+            for key in data.keys():
                 condition = key
-                quiry = kwargs[key]
+                quiry = data[key]
                 if '订单编号' == condition:
                     msg = msg + ';' + wd.find_element_by_xpath(
                         '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[2]/div/div/table/tbody/tr[1]/td[2]').text
@@ -332,9 +334,24 @@ class Test_order:
             print('test_order:' + condition1[1:] + '=>' + quiry1[1:] + '=======================>sucess', file=f)
         else:
             print('test_order:' + condition1[1:] + '=>' + quiry1[1:] + '=======================>fail', file=f)
-    def test1(self, **kwargs):
-        for key in kwargs.keys():
-            print(key+kwargs[key])
+
+    def test1(self, a):
+        for key in a.keys():
+            print(key+a[key])
+        print(a)
+
+    def str_to_dict(self, s):
+        b = s.split('，')
+        c = list()
+        d = list()
+        for i in b:
+            c.append(i.split('：')[0])
+            d.append(i.split('：')[1])
+        print(c)
+        print(d)
+        e = dict(zip(c, d))
+        print(e)
+        return e
 
 if __name__ == '__main__':
     test = Test_order()
@@ -347,6 +364,10 @@ if __name__ == '__main__':
     # test.test_order_singlequery('已结束', '订单状态')
     # test.test_order_singlequery('无异常', '异常状态')
     # test.test_order_singlequery('非员工', '用户类型')
-    test.test_order_singlequery('余额不足', '结束状态')
-    test.test_order_multiplequery(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
-    # test.test1(a='b', c='d')
+    # test.test_order_singlequery('余额不足', '结束状态')
+    # test.test_order_multiplequery(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
+    # test.test_order_multiplequery(结束状态='超时结束')
+    # test.test_order_multiplequery(订单状态='骑行中', 异常状态='无异常')
+    s = '结束状态：boss结束，开始时间：2020-07-13 00:00:00,2020-07-14 00:00:00，用户类型：非员工'
+    # s = test.str_to_dict(s)
+    test.test_order_multiplequery(s)
