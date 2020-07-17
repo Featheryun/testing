@@ -14,7 +14,6 @@ class Login:
         wd.find_element_by_css_selector("#root > div > div.antd-pro-layouts-user-layout-content > div.antd-pro-pages-user-login-style-main > div.antd-pro-pages-user-login-components-login-index-login > form > div.ant-row.ant-form-item > div > div > span > button").click()
         flag = True
         wd.implicitly_wait(5)
-        time.sleep(1)
         try:
             wd.find_element_by_xpath("/html/body/div[2]/div/div[2]/div/div[2]/div[2]/div/button[2]")
         except:

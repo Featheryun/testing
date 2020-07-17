@@ -10,3 +10,7 @@ test_userinfo:骑行状态:骑行中====success
 test_userinfo:骑行状态:临时锁车====success
 test_userinfo:骑行状态:空闲====success
 test_userinfo:骑行状态:空闲====success
+test_userinfo:;空闲:;骑行状态====fail
+test_userinfo:;骑行状态:;空闲====success
+test_userinfo:;骑行状态;违约状态=>;空闲;无待处理违约====success
+test_userinfo:骑行状态;违约状态=>空闲;无待处理违约====success
