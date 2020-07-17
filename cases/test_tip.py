@@ -172,9 +172,13 @@ class Test_tip:
             print('test_tip:' + condition1[1:] + ' ==> ' +query1[1:] + ' ========================>sucess', file=f)
         else:
             print('test_tip:' + condition1[1:] + ' ==> ' +query1[1:] + ' ========================>fail', file=f)
+        wd.quit()
+        f.close()
 
 if __name__ == '__main__':
     test = Test_tip()
-    # test.test_tip('车辆编码：511502000361，举报来源：用户，发生时间：2020-06-10 00:00:00,2020-07-11 00:00:00')
+    test.test_tip('车辆编码：511502000361，举报来源：用户，发生时间：2020-06-10 00:00:00,2020-07-11 00:00:00')
     # test.test_tip('举报类型（运维）：停放标准-封闭区域内-出入口通道')
-    test.test_tip('处罚结果：不处罚')
+    # test.test_tip('处罚结果：不处罚')
+    # test.test_tip('核实状态：待处理')
+    # test.test_tip('举报类型（用户）：恶意毁坏车辆，处罚结果：不处罚，核实状态：核实')

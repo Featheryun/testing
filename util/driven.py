@@ -1,8 +1,8 @@
 from util.excel_read import excel_read
 
+
 class Driven:
-    def drive_it(self):
-        file_path = "test_data_driven.xlsx"
+    def drive_it(self, file_path):
         datas = excel_read(file_path)
         for data in datas:
             print('==========='+data[0]+'=============\n')
@@ -17,4 +17,5 @@ class Driven:
 
 if __name__ == '__main__':
     driven = Driven()
-    driven.drive_it()
+    file_path = "test_data_driven.xlsx"
+    driven.drive_it(file_path)

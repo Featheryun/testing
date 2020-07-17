@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/cases/result1.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cases/test_order_result.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/cases/test_payment_result.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cases/test_shortorder.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cases/test_shortorder_result.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cases/test_tip_result.txt" charset="GBK" />
