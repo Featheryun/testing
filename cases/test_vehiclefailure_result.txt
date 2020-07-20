@@ -7,3 +7,4 @@ test_vehiclefailure:报障类型（员工）=>刹车--------------sucesss
 test_vehiclefailure:上报来源=>员工--------------sucesss
 test_vehiclefailure:报障类型（员工）=>坐垫--------------sucesss
 test_vehiclefailure:报障类型（员工）=>坐垫--------------fail
+test_vehiclefailure:上报来源=>员工--------------sucesss
