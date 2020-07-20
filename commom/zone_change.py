@@ -13,7 +13,7 @@ class Zone_change:
         wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div').click()
         # WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div'))
         wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div/div/div/div[3]/div/input').send_keys(zone)
-        ActionChains(wd).move_by_offset(200, 200).click().perform()     # 点击空白处
+        ActionChains(wd).move_by_offset(500, 200).click().perform()     # 点击空白处
         wd.implicitly_wait(5)
         return wd
 

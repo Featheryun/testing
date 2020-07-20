@@ -171,4 +171,5 @@ if __name__ == '__main__':
     # test.test_vehiclefailure('test_vehiclefailure', '车辆编码：511502000288', '')
     # test.test_vehiclefailure('test_vehiclefailure', '上报时间：2020-07-10 00:00:00,2020-07-11 00:00:00', '')
     # test.test_vehiclefailure('test_vehiclefailure', '报障类型（员工）：坐垫', '')
-    test.test_vehiclefailure('test_vehiclefailure', '上报来源：员工', '')
+    # test.test_vehiclefailure('test_vehiclefailure', '上报来源：员工', '')
+    test.test_vehiclefailure('test_vehiclefailure', '上报时间：2020-07-10 00:00:00,2020-07-11 00:00:00，车辆编码：511502000288，报障类型（员工）：坐垫', '')
