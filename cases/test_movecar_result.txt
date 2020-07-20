@@ -1,0 +1,18 @@
+test_movecar001:execute==============>error
+test_movecar001:execute==============>error
+test_movecar001:==>询为空====================>fail
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:execute==============>error
+test_movecar002:开始时间==>2020-07-20 00:00:00,2020-07-21 00:00:00====================>fail
+test_movecar002:开始时间==>2020-07-20 00:00:00,2020-07-21 00:00:00====================>sucess
