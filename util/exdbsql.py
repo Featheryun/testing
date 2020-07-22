@@ -1,5 +1,6 @@
 import MySQLdb
 
+
 def exdbsql(sql):
     # 连接数据库
     db = MySQLdb.connect('localhost', 'root', '123456', 'dbname')
