@@ -5,7 +5,7 @@ from commom.login import Login
 class Test_Login:
     # 登录成功
     def test_login_sucess(self, caseid, datas, results):
-        f = open("result.txt", "a")
+        f = open("D:/testing/testfile/test_login_sucess_result.txt", "a")
         username = datas.split('\n')[0].split('=')[1]
         pwd = datas.split('\n')[1].split('=')[1]
         login  = Login()
@@ -20,7 +20,7 @@ class Test_Login:
         wd.quit()
     # 登录失败
     def test_login_fail(self, caseid, datas, results):
-        f = open('result.txt', 'a')
+        f = open('D:/testing/testfile/test_login_fail_result.txt', 'a')
         username = datas.split('\n')[0].split('=')[1]
         pwd = datas.split('\n')[0].split('=')[1]
         login = Login()

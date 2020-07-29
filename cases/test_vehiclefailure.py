@@ -14,7 +14,7 @@ class Test_vehiclefailure:
         msg = ''
         condition1 = ''
         quiry1 = ''
-        f = open('test_vehiclefailure_result.txt', 'a')
+        f = open('D:/testing/testfile/test_vehiclefailure_result.txt', 'a')
         try:
             login  = Login()
             wd = login.login('15095859543', '123456')

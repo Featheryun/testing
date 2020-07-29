@@ -6,7 +6,7 @@ from util.excel_read import excel_read
 # 终端查询车辆
 class Terminal_inqury:
     def terminal_inqury(self, data, wd):
-        f = open('result1.txt', 'a')
+        f = open('D:/testing/testfile/terminal_inqury_result.txt', 'a')
         if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/IOT管理/车辆':
             wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[2]/div[1]').click()
             time.sleep(1)

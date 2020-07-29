@@ -5,7 +5,7 @@ from commom.login import Login
 
 class Test_Terminal:
     def test_terminal_terid_inqury(self, caseid, datas, results):
-        f = open('result.txt', 'a')
+        f = open('D:/testing/testfile/test_terminal_result.txt', 'a')
         try:
             login = Login()
             wd = login.login('15095859543', '123456')

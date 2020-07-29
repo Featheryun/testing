@@ -1,6 +1,0 @@
-test_shortorder:用户姓名=>张雪林=========>sucess
-test_shortorder:用户姓名=>张雪林=========>sucess
-test_shortorder:手机号码=>15283638111=========>sucess
-test_shortorder:车辆编码=>511502000458=========>sucess
-test_shortorder:车辆编码=>511502000458=========>sucess
-test_shortorder:车辆编码=>511502000458=========>sucess

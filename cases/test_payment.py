@@ -9,7 +9,7 @@ from util.str_to_dict import str_to_dict
 class Test_payment:
     def test_payment(self, caseid, data, results):
         data = str_to_dict(data)
-        f = open('test_payment_result.txt', 'a')
+        f = open('D:/testing/testfile/test_payment_result.txt', 'a')
         try:
             login = Login()
             wd = login.login('15095859543', '123456')
@@ -108,6 +108,8 @@ class Test_payment:
                 msg = ''
             if query1 in msg:
                 print(caseid + ':' + condition1[1:] + ' ==> ' + query1[1:] + '===============>sucess', file=f)
+            elif msg == results:
+                print(caseid + ':' + condition1[1:] + ' ==> ' + msg + '===============>sucess', file=f)
             else:
                 print(caseid + ':' + condition1[1:] + ' ==> ' + query1[1:] + '===============>fail', file=f)
         except:
@@ -116,3 +118,4 @@ class Test_payment:
 if __name__ == '__main__':
     test = Test_payment()
     test.test_payment('test_payment001', '用户姓名：赵强，发起时间：2020-07-10 00:00:00,2020-07-17 00:00:00', '')
+    # test.test_payment('test_payment002', '')

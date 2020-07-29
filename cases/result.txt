@@ -1,4 +1,0 @@
-test_terminal001Test Failed
-test_terminal001Test Failed
-test_terminal001Test Sucessfully
-test_terminal001Test Sucessfully

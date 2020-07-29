@@ -8,7 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 class Test_order:
     def test_order(self, **kwargs):
-        f = open('test_order_result.txt', 'a')
+        f = open('D:/testing/testfile/test_order_result.txt', 'a')
         login = Login()
         wd = login.login('15095859543', '123456')
         zone = Zone_change()

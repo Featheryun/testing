@@ -11,7 +11,7 @@ from util.str_to_dict import str_to_dict
 class Test_shortorder:
     def test_shortorder(self, caseid, data, results):
         data = str_to_dict(data)
-        f = open('test_shortorder_result.txt', 'a')
+        f = open('D:/testing/testfile/test_shortorder_result.txt', 'a')
         try:
             login = Login()
             wd = login.login('15095859543', '123456')

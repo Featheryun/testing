@@ -24,3 +24,4 @@ def sketch(img):
 
 if __name__ == '__main__':
     sketch('timg.jpg')
+    # print(np.arange(0, 6, 2))

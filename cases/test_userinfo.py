@@ -14,7 +14,7 @@ class Test_Userinfo:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
     def test_userinfo(self, caseid, data, reluts):
         data = str_to_dict(data)
-        f = open('result1.txt', 'a')
+        f = open('D:/testing/testfile/result1.txt', 'a')
         try:
             login = Login()
             wd = login.login('15095859543', '123456')

@@ -10,7 +10,7 @@ from util.str_to_dict import str_to_dict
 class Test_tip:
     def test_tip(self, data):
         data = str_to_dict(data)
-        f = open('test_tip_result.txt', 'a')
+        f = open('D:/testing/testfile/test_tip_result.txt', 'a')
         login = Login()
         wd = login.login('15095859543', '123456')
         zone = Zone_change()

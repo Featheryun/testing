@@ -11,7 +11,7 @@ from selenium.webdriver.common.keys import Keys
 class Test_movecar:
     def test_movecar(self, caseid, data, results):
         data = str_to_dict(data)
-        f = open('test_movecar_result.txt', 'a')
+        f = open('D:/testing/testfile/test_movecar_result.txt', 'a')
         msg = ''
         condition1 = ''
         query1 = ''
