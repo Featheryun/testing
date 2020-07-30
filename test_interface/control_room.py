@@ -22,7 +22,7 @@ def balance_inquiry(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
 
 
 # 客户余额列表查询8天
@@ -36,7 +36,7 @@ def balance_list(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
 
 
 # 运营收入统计详情查询
@@ -57,7 +57,7 @@ def op_income_inquiry(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
 
 
 # 运营收入统计列表查询
@@ -71,7 +71,7 @@ def op_income_list(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
 
 
 # 客户充值统计列表查询
@@ -92,7 +92,7 @@ def top_up_list(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
 
 
 # 车辆数据查询
@@ -113,7 +113,63 @@ def op_vehicle_inquiry(datas):
     except requests.exceptions.ChunkedEncodingError:
         print('chunked编码问题')
     except:
-        print('1')
+        print('error')
+
+
+# 设备维修记录详情查询
+def repair_log_inquiry(datas):
+    id = datas.split(',')[0]
+    vehicleId = datas.split(',')[1]
+    datas = {'id': id, 'vehicleId': vehicleId}
+    try:
+        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, datas=datas)
+        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chunked编码问题')
+    except:
+        print('error')
+
+#
+# 设备故障分页查询
+def fault_paging(datas):
+    regionId = datas.split(',')[0]
+    terminalId = datas.split(',')[1]
+    vehicleSn = datas.split(',')[2]
+    datas = {
+        'page':{'current': 0, 'size': 10, 'total': 10},
+        'regionId': regionId, 'terminalId': terminalId, 'vehichleSn': vehicleSn
+    }
+    try:
+        response = requests.post(url='http://192.168.3.66:8084/iot/fault/paging')
+        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chunked编码问题')
+    except:
+        print('error')
+#
+#
+# 投放回收分页查询
+def launch_paging(datas):
+    flag = datas.split(',')[0]
+    regionId = datas.split(',')[1]
+    vehicleId = datas.split(',')[2]
+    datas = {
+        'page':{'current': 1, 'size': 10, 'total': 10},
+        'regionId': regionId, 'flag': flag, 'vehicleId': vehicleId
+    }
+    try:
+        response = requests.post(url='http://192.168.3.66:8084/iot/launch/paging', headers=headers, datas=datas)
+        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chunked编码问题')
+    except:
+        print('error')
 
 
 if __name__ == '__main__':
@@ -122,4 +178,4 @@ if __name__ == '__main__':
     op_income_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
     op_income_list('511902')
     op_vehicle_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
-    top_up_list('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
+    top_up_list('2020-05-01 00:00:00,2020-05-15 23:59:59,511502 ')
