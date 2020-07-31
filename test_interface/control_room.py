@@ -122,7 +122,7 @@ def repair_log_inquiry(datas):
     vehicleId = datas.split(',')[1]
     datas = {'id': id, 'vehicleId': vehicleId}
     try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, datas=datas)
+        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, data=datas)
         print(response.json()['result'], '\n', response.elapsed.total_seconds())
     except requests.exceptions.ConnectionError:
         print('连接问题')
@@ -142,7 +142,7 @@ def fault_paging(datas):
         'regionId': regionId, 'terminalId': terminalId, 'vehichleSn': vehicleSn
     }
     try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/fault/paging')
+        response = requests.post(url='http://192.168.3.66:8084/iot/fault/paging', headers=headers, data=json.dumps(datas))
         print(response.json()['result'], '\n', response.elapsed.total_seconds())
     except requests.exceptions.ConnectionError:
         print('连接问题')
@@ -162,7 +162,7 @@ def launch_paging(datas):
         'regionId': regionId, 'flag': flag, 'vehicleId': vehicleId
     }
     try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/launch/paging', headers=headers, datas=datas)
+        response = requests.post(url='http://192.168.3.66:8084/iot/launch/paging', headers=headers, data=json.dumps(datas))
         print(response.json()['result'], '\n', response.elapsed.total_seconds())
     except requests.exceptions.ConnectionError:
         print('连接问题')
@@ -172,10 +172,31 @@ def launch_paging(datas):
         print('error')
 
 
+# 用户数据查询
+def op_user_inquiry(datas):
+    beginAt = datas.split(',')[0]
+    endAt = datas.split(',')[1]
+    regionId = datas.split(',')[2]
+    datas = {'beginAt': beginAt, 'endAt': endAt, 'regionId': regionId}
+
+    try:
+        response = requests.post(url='http://192.168.3.66:8084/stat/op_user/inquiry', headers=headers,
+                                 data=json.dumps(datas))
+        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chunked编码问题')
+    except:
+        print('error')
+
 if __name__ == '__main__':
-    balance_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
-    balance_list('511902')
-    op_income_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
-    op_income_list('511902')
-    op_vehicle_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
-    top_up_list('2020-05-01 00:00:00,2020-05-15 23:59:59,511502 ')
+    # balance_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
+    # balance_list('511902')
+    # op_income_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
+    # op_income_list('511902')
+    op_vehicle_inquiry('2020-07-01 00:00:00,2020-07-27 23:59:59,511502')
+    # top_up_list('2020-05-01 00:00:00,2020-05-15 23:59:59,511502 ')
+    # launch_paging('511502,1,null')
+    # op_user_inquiry('2020-07-01 00:00:00,2020-07-01 23:59:59,511902')
+
