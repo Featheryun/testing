@@ -51,7 +51,11 @@ def op_income_inquiry(datas):
     }
     try:
         response = requests.post(url='http://192.168.3.66:8084/stat/op_income/inquiry', headers=headers, data=json.dumps(datas), timeout=60)
-        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+        # print(response.json()['result'], '\n', response.elapsed.total_seconds())
+        a = response.json()['result']
+        for key in a.keys():
+            print(key, a[key])
+        print('请求时间：', response.elapsed.total_seconds(), '秒')
     except requests.exceptions.ConnectionError:
         print('连接错误')
     except requests.exceptions.ChunkedEncodingError:
@@ -64,8 +68,14 @@ def op_income_inquiry(datas):
 def op_income_list(datas):
     datas = {'regionId': datas}
     try:
-        response = requests.post(url='http://192.168.3.66:8084/stat/op_income/list', headers=headers, data=json.dumps(datas), timeout=60)
-        print(response.json()['result'], '\n', response.elapsed.total_seconds())
+        response = requests.post(url='http://192.168.3.66:8084/stat/op_income/list', headers=headers,
+                                 data=json.dumps(datas), timeout=60)
+        # print(response.json()['result'], '\n', response.elapsed.total_seconds())
+        a = response.json()['result']
+        for key in a:
+            for i in key.keys():
+                print(key[i])
+        print(response.elapsed.total_seconds())
     except requests.exceptions.ConnectionError:
         print('连接错误')
     except requests.exceptions.ChunkedEncodingError:
@@ -116,62 +126,6 @@ def op_vehicle_inquiry(datas):
         print('error')
 
 
-# 设备维修记录详情查询
-def repair_log_inquiry(datas):
-    id = datas.split(',')[0]
-    vehicleId = datas.split(',')[1]
-    datas = {'id': id, 'vehicleId': vehicleId}
-    try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, data=datas)
-        print(response.json()['result'], '\n', response.elapsed.total_seconds())
-    except requests.exceptions.ConnectionError:
-        print('连接问题')
-    except requests.exceptions.ChunkedEncodingError:
-        print('chunked编码问题')
-    except:
-        print('error')
-
-#
-# 设备故障分页查询
-def fault_paging(datas):
-    regionId = datas.split(',')[0]
-    terminalId = datas.split(',')[1]
-    vehicleSn = datas.split(',')[2]
-    datas = {
-        'page':{'current': 0, 'size': 10, 'total': 10},
-        'regionId': regionId, 'terminalId': terminalId, 'vehichleSn': vehicleSn
-    }
-    try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/fault/paging', headers=headers, data=json.dumps(datas))
-        print(response.json()['result'], '\n', response.elapsed.total_seconds())
-    except requests.exceptions.ConnectionError:
-        print('连接问题')
-    except requests.exceptions.ChunkedEncodingError:
-        print('chunked编码问题')
-    except:
-        print('error')
-#
-#
-# 投放回收分页查询
-def launch_paging(datas):
-    flag = datas.split(',')[0]
-    regionId = datas.split(',')[1]
-    vehicleId = datas.split(',')[2]
-    datas = {
-        'page':{'current': 1, 'size': 10, 'total': 10},
-        'regionId': regionId, 'flag': flag, 'vehicleId': vehicleId
-    }
-    try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/launch/paging', headers=headers, data=json.dumps(datas))
-        print(response.json()['result'], '\n', response.elapsed.total_seconds())
-    except requests.exceptions.ConnectionError:
-        print('连接问题')
-    except requests.exceptions.ChunkedEncodingError:
-        print('chunked编码问题')
-    except:
-        print('error')
-
-
 # 用户数据查询
 def op_user_inquiry(datas):
     beginAt = datas.split(',')[0]
@@ -193,9 +147,9 @@ def op_user_inquiry(datas):
 if __name__ == '__main__':
     # balance_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
     # balance_list('511902')
-    # op_income_inquiry('2020-05-01 00:00:00,2020-05-15 23:59:59,511502')
-    # op_income_list('511902')
-    op_vehicle_inquiry('2020-07-01 00:00:00,2020-07-27 23:59:59,511502')
+    # op_income_inquiry('2020-01-01 00:00:00,2020-12-31 23:59:59,511902')
+    op_income_list('511902')
+    # op_vehicle_inquiry('2020-07-01 00:00:00,2020-07-27 23:59:59,511502')
     # top_up_list('2020-05-01 00:00:00,2020-05-15 23:59:59,511502 ')
     # launch_paging('511502,1,null')
     # op_user_inquiry('2020-07-01 00:00:00,2020-07-01 23:59:59,511902')
