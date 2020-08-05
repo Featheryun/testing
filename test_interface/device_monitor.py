@@ -54,5 +54,5 @@ def staff_list(datas):
 
 
 if __name__ == '__main__':
-    # device_list('null,511902,0')
-    staff_list('511902,0')
+    device_list('null,511902,null')
+    # staff_list('511902,0')
