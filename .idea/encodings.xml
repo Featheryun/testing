@@ -11,5 +11,6 @@
     <file url="file://$PROJECT_DIR$/cases/test_tip_result.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/cases/test_vehiclefailure_result.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/util/test_movecar_result.txt" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>

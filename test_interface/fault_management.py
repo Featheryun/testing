@@ -11,7 +11,7 @@ def repair_log_inquiry(datas):
     vehicleId = datas.split(',')[1]
     datas = {'id': id, 'vehicleId': vehicleId}
     try:
-        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, data=datas)
+        response = requests.post(url='http://192.168.3.66:8084/iot/repair_log/inquiry', headers=headers, data=json.dumps(datas))
         print(response.json()['result'], '\n', response.elapsed.total_seconds())
     except requests.exceptions.ConnectionError:
         print('连接问题')
@@ -60,5 +60,5 @@ def confirm_fault_submit(datas):
         print('error')
 
 if __name__ == '__main__':
-    # fault_paging(1, 20, 20, '511502,null,null')
-    confirm_fault_submit('3325,null')
+    fault_paging(1, 20, 20, '511502,null,null')
+    # confirm_fault_submit('3325,null')

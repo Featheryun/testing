@@ -21,6 +21,10 @@ def launch_paging(current, size, total, datas):
         response = requests.post(url='http://192.168.3.66:8084/iot/launch/paging', headers=headers, data=json.dumps(datas))
         # print(response.json()['result'], '\n', response.elapsed.total_seconds())
         a = response.json()['result']
+        if response.status_code == requests.codes.ok:
+            print('ok')
+        else:
+            print('error')
         for i in a:
             for key in i.keys():
                 print(key, i[key])
