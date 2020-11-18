@@ -88,3 +88,4 @@ if __name__ == '__main__':
     test = Test_movecar()
     # test.test_movecar('test_movecar001', '员工姓名：赵楠', '')
     test.test_movecar('test_movecar002', '开始时间：2020-07-20 00:00:00,2020-07-21 00:00:00', '')
+    test.test_movecar('test_movecar003', '开始时间：2020-10-20 00:00:00,2020-10-23 23:59:59', '')

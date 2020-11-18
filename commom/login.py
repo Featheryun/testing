@@ -26,7 +26,7 @@ class Login:
 if __name__ == '__main__':
     Login  = Login()
     username = "15095859543"
-    password = "12"
+    password = "123456"
     wd = Login.login(username, password)
     time.sleep(0.1)
     print(wd.find_element_by_xpath('//*[@id="root"]/div/div[2]/div[2]/div[1]/form/div[1]/div[3]/div/div[2]').text)

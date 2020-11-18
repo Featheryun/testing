@@ -33,4 +33,6 @@ class Test_Login:
 
         f.close()
         wd.quit()
-
+if __name__ == '__main__':
+    login = Test_Login()
+    login.test_login_sucess('15095859543', '123456')
