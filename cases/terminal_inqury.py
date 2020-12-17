@@ -37,7 +37,7 @@ if __name__ == '__main__':
     login = Login()
     zone_change = Zone_change()
     wd = login.login('15095859543', '123456')  # 登录
-    wd = zone_change.zone_change('翠屏区', wd)     # 切换翠屏区
+    wd = zone_change.zone_change('珙县', wd)     # 切换翠屏区
     file_path = 'C:\\Users\\Administrator\\Desktop\\中控号.xlsx'
     datas = excel_read(file_path)   # 读取终端号
     # 循环遍历每个终端号查询

@@ -139,12 +139,21 @@ def order_paging(datas):
     endAt = datas.split(',')[1]
     regionId = datas.split(',')[2]
     datas = {'startAt': startAt, 'endAt': endAt, 'regionId': regionId, 'page': {'size': 10000, 'current': 1, 'total': 0}}
-    response = requests.post(url='http://192.168.3.8:8082/usr/order/paging', headers=headers, data=json.dumps(datas))
-    result = response.json()['result']
-    a = 0
-    for i in result:
-        a = a + i['amountPaid']
-    print(round(a, 2))
+    try:
+        response = requests.post(url='http://192.168.3.8:8082/usr/order/paging', headers=headers, data=json.dumps(datas))
+        result = response.json()['result']
+        a = 0
+        for i in result:
+            a = a + i['amountPaid']
+        print(round(a, 2))
+        a = round(a, 2)
+        return a
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chuncked编码问题')
+    except:
+        print('error')
 
 
 if __name__ == '__main__':
