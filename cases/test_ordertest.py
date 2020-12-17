@@ -12,7 +12,8 @@ class Test_order:
         login = Login()
         wd = login.login('15095859543', '123456')
         zone = Zone_change()
-        wd = zone.zone_change('翠屏区', wd)
+        # wd = zone.zone_change('翠屏区', wd)
+        wd = zone.zone_change('珙县', wd)
         starttime = ''
         endtime = ''
         if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/订单管理/订单明细':
@@ -201,4 +202,11 @@ if __name__ == '__main__':
     # test.test_order('非员工', '用户类型')
     # test.test_order('余额不足', '结束状态')
     # test.test1(a='b', c='d')
-    test.test_order(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
+    # test.test_order(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
+    a = 1
+    b = 1.0
+    c = '1'
+    print(type(a))
+    print(type(b))
+    print(type(c))
+    print(type(a+b), a+b)
