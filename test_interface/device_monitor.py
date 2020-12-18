@@ -159,11 +159,11 @@ def order_paging(datas):
 if __name__ == '__main__':
     # device_list('null,511902,null')
     # staff_list('511902,0')
-    # a = refund('10,511526,2020')
-    # b = refund_inquiry('10,511526,2020')
-    # assert a == b
-    # print(type(a), type(b))
-    # c = makeup_amount('10,511526,2020')
-    # d = makeup_paging('10,511526,2020')
-    # assert c == d
-    order_paging('2020-11-23 00:00:00,2020-11-23 23:44:11,511527')
+    a = refund('10,511526,2020')
+    b = refund_inquiry('10,511526,2020')
+    assert a == b
+    print(type(a), type(b))
+    c = makeup_amount('10,511526,2020')
+    d = makeup_paging('10,511526,2020')
+    assert c == d
+    # order_paging('2020-11-23 00:00:00,2020-11-23 23:44:11,511527')
