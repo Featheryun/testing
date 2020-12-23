@@ -1,5 +1,6 @@
 from util.excel_read import excel_read
-
+import unittest
+from ddt import ddt, data
 
 class Driven:
     def drive_it(self, file_path):
@@ -15,7 +16,17 @@ class Driven:
             # 放入参数，执行方法
             method(data[0], data[4], data[5])
 
+
+# class Userinfo_TestCase(unittest.TestCase):
+
+
+
 if __name__ == '__main__':
-    driven = Driven()
-    file_path = "test_data_driven.xlsx"
-    driven.drive_it(file_path)
+    # driven = Driven()
+    # file_path = "test_data_driven.xlsx"
+    # driven.drive_it(file_path)
+    suite = unittest.TestSuite()
+    loader = unittest.TestLoader()
+    suite.addTest(Userinfo_TestCase('test_info'))
+    result = BeautifulReport(suite)
+    result.report(filename='用户信息', description='测试报告', report_dir='D:\\testing\\util', theme='theme_default')

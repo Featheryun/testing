@@ -117,7 +117,7 @@ def makeup_paging(datas):
     year = datas.split(',')[2]
     datas = {'month': month, 'regionId': regionId, 'year': year, 'page': {'pageSize': 10000, 'pageNum': 1}}
     try:
-        response = requests.post(url='http://192.168.3.8:9099/inq/data/makeup/paging', headers=headers, data=json.dumps(datas))
+        response = requests.post(url='https://data2020.nm666.cn/inq/data/makeup/paging', headers=headers, data=json.dumps(datas))
         makeupamount1 = response.json()['result']
         makeupamount = 0
         for i in makeupamount1:
@@ -159,11 +159,11 @@ def order_paging(datas):
 if __name__ == '__main__':
     # device_list('null,511902,null')
     # staff_list('511902,0')
-    a = refund('10,511526,2020')
-    b = refund_inquiry('10,511526,2020')
-    assert a == b
-    print(type(a), type(b))
-    c = makeup_amount('10,511526,2020')
-    d = makeup_paging('10,511526,2020')
-    assert c == d
+    # a = refund('10,511526,2020')
+    # b = refund_inquiry('10,511526,2020')
+    # assert a == b
+    # print(type(a), type(b))
+    # c = makeup_amount('10,511526,2020')
+    d = makeup_paging('12,511526,2020')
+    # assert c == d
     # order_paging('2020-11-23 00:00:00,2020-11-23 23:44:11,511527')

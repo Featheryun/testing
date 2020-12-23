@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 # 切换区域
 class Zone_change:
     def zone_change(self, zone, wd):
-        time.sleep(2)
+        wd.implicitly_wait(5)
         wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div').click()
         # WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div'))
         wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/header/div/div/div[2]/div/div/div/div/div[3]/div/input').send_keys(zone)
