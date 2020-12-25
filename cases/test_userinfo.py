@@ -246,7 +246,7 @@ class Userinfo_TestCase(unittest.TestCase):
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(19*Keys.BACK_SPACE)
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(endAt)
                     ActionChains(wd).move_by_offset(300, 100).click().perform()
-                    time.sleep(1)
+                    # time.sleep(1)
 
                 elif condition == '账号状态':
                     wd.find_element_by_xpath('//*[@id="status"]/div/div').click()
