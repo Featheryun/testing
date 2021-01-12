@@ -389,7 +389,6 @@ if __name__ == '__main__':
     suite.addTest(Userinfo_TestCase('test_info'))
     result = BeautifulReport(suite)
     result.report(filename='用户信息', description='测试报告', report_dir='D:\\testing\\util', theme='theme_default')
-
     # pathro = os.path.abspath(os.path.dirname(__file__)) + '.html'
 
     # with open('D:\\testing\\util\\HTMLReport.html', 'wb') as report:

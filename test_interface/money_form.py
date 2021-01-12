@@ -31,8 +31,8 @@ def makeup_paging(datas):
     month = datas.split(',')[0]
     regionId = datas.split(',')[1]
     year = datas.split(',')[2]
-    data = {'month': month, 'regionId': regionId, 'year': year, 'page': {'pageSize': 10000, 'pageNum': 1}}
-    response = requests.post(url='https://data2020.nm666.cn/inq/data/makeup/paging', headers=headers, data=json.dumps(data))
+    datas = {'month': month, 'regionId': regionId, 'year': year, 'page': {'pageSize': 10000, 'pageNum': 1}}
+    response = requests.post(url='https://data2020.nm666.cn/inq/data/makeup/paging', headers=headers, data=json.dumps(datas))
     result = response.json()['result']
     a = 0
     for i in result:
@@ -46,8 +46,8 @@ def monthorder_paging(datas):
     month = datas.split(',')[0]
     regionId = datas.split(',')[1]
     year = datas.split(',')[2]
-    data = {'month': month, 'regionId': regionId, 'year': year, 'page': {'pageSize': 100000, 'pageNum': 1}}
-    response = requests.post(url='https://data2020.nm666.cn/inq/data/statement/inquiry', headers=headers, data=json.dumps(data))
+    datas = {'month': month, 'regionId': regionId, 'year': year, 'page': {'pageSize': 100000, 'pageNum': 1}}
+    response = requests.post(url='https://data2020.nm666.cn/inq/data/statement/paging', headers=headers, data=json.dumps(datas))
     print(response.json())
     # result = response.json()['result']
     # actualAmounts = 0

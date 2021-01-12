@@ -22,11 +22,11 @@ class Driven:
 
 
 if __name__ == '__main__':
-    # driven = Driven()
-    # file_path = "test_data_driven.xlsx"
-    # driven.drive_it(file_path)
-    suite = unittest.TestSuite()
-    loader = unittest.TestLoader()
-    suite.addTest(Userinfo_TestCase('test_info'))
-    result = BeautifulReport(suite)
-    result.report(filename='用户信息', description='测试报告', report_dir='D:\\testing\\util', theme='theme_default')
+    driven = Driven()
+    file_path = "test_data_driven.xlsx"
+    driven.drive_it(file_path)
+    # suite = unittest.TestSuite()
+    # loader = unittest.TestLoader()
+    # suite.addTest(Userinfo_TestCase('test_info'))
+    # result = BeautifulReport(suite)
+    # result.report(filename='用户信息', description='测试报告', report_dir='D:\\testing\\util', theme='theme_default')
