@@ -191,6 +191,10 @@ class Test_Userinfo:
 @ddt()
 class Userinfo_TestCase(unittest.TestCase):
     datas1 = excel_read("D:\\testing\\util\\test_data.xlsx")
+    userinfodatas = []
+    for i in datas1:
+        if 'userinfo' in i[0]:
+            userinfodatas.append(i)
     @classmethod
     def setUpClass(cls):
         try:
@@ -203,7 +207,7 @@ class Userinfo_TestCase(unittest.TestCase):
             print('error')
         return cls.wd
 
-    @data(*datas1)
+    @data(*userinfodatas)
     def test_info(self, case):
         data = str_to_dict(case[4])
         caseid = case[0]
