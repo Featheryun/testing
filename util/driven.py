@@ -1,6 +1,7 @@
 from util.excel_read import excel_read
 import unittest
 from ddt import ddt, data
+import datetime
 
 class Driven:
     def drive_it(self, file_path):
@@ -22,11 +23,16 @@ class Driven:
 
 
 if __name__ == '__main__':
-    driven = Driven()
-    file_path = "test_data_driven.xlsx"
-    driven.drive_it(file_path)
+    # driven = Driven()
+    # file_path = "test_data_driven.xlsx"
+    # driven.drive_it(file_path)
     # suite = unittest.TestSuite()
     # loader = unittest.TestLoader()
     # suite.addTest(Userinfo_TestCase('test_info'))
     # result = BeautifulReport(suite)
     # result.report(filename='用户信息', description='测试报告', report_dir='D:\\testing\\util', theme='theme_default')
+    str_p = '2019-01-30 15:29:08'
+    dateTime_p = datetime.datetime.strptime(str_p, '%Y-%m-%d %H:%M:%S')
+    nowtime = datetime.datetime.now()
+    assert dateTime_p > nowtime
+    print(dateTime_p, nowtime)

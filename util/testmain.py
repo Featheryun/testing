@@ -5,7 +5,7 @@ from BeautifulReport import BeautifulReport
 import time
 datedemo = time.strftime('%Y-%m-%d-%H')
 # pathro2 = os.path.abspath(os.path.dirname(__file__))+datedemo+'.html'
-discover = unittest.defaultTestLoader.discover('D:\\testing\\cases\\', pattern="test_userinfo.py")
+discover = unittest.defaultTestLoader.discover('D:\\testing\\cases\\', pattern="test_*.py")
 if __name__ == "__main__":
     report = BeautifulReport(discover)
     a = '用户信息(' + datedemo + ')'

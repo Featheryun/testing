@@ -114,7 +114,7 @@ class Test_Userinfo:
                     wd.implicitly_wait(5)
             time.sleep(0.5)
             wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[4]/div/button[1]').click()
-            time.sleep(3)
+            time.sleep(0.5)
             try:
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[3]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[5]')
                 flag = True
