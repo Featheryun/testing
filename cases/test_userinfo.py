@@ -13,7 +13,7 @@ from ddt import ddt, data
 from util.excel_read import excel_read
 from HTMLTestRunner import HTMLTestRunner
 import os
-
+from commom.logoutput import LogOutput
 
 class Test_Userinfo:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -380,6 +380,8 @@ class Userinfo_TestCase(unittest.TestCase):
             '//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[4]/div/button[2]').click()
         self.wd = wd
         f.close()
+        logoutput = LogOutput()
+        logoutput.logOutput('D:/testing/testfile/test_userinfo_log.txt', 'test_userinfo')
         return self.wd
 
     @classmethod

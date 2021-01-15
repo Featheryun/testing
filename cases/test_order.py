@@ -359,6 +359,7 @@ import unittest
 from  ddt import ddt, data
 from util.excel_read import excel_read
 from util.str_to_dict import str_to_dict
+from commom.logoutput import LogOutput
 
 @ddt()
 class Order_TestCase(unittest.TestCase):
@@ -502,7 +503,6 @@ class Order_TestCase(unittest.TestCase):
                 Flag = True
             except:
                 Flag = False
-                print(1)
             if Flag:
                 for key in data.keys():
                     condition = key
@@ -544,9 +544,12 @@ class Order_TestCase(unittest.TestCase):
                     elif '开始时间' == condition:
                         msg1 = wd.find_element_by_xpath(
                             '//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[10]').text
-                        msg1 = datetime.date(*map(int, msg1.split(' ')[0].split('-')))
-                        starttime = datetime.date(*map(int, starttime.split(' ')[0].split('-')))
-                        endtime = datetime.date(*map(int, endtime.split(' ')[0].split('-')))
+                        # msg1 = datetime.date(*map(int, msg1.split(' ')[0].split('-')))
+                        msg1 = datetime.datetime.strptime(msg1, '%Y-%m-%d %H:%M:%S')
+                        # starttime = datetime.date(*map(int, starttime.split(' ')[0].split('-')))
+                        starttime = datetime.datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
+                        # endtime = datetime.date(*map(int, endtime.split(' ')[0].split('-')))
+                        endtime = datetime.datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
                         if msg1 >= starttime and msg1 <= endtime:
                             msg = msg + ';' + quiry
                         else:
@@ -569,6 +572,8 @@ class Order_TestCase(unittest.TestCase):
         except:
             self.assertEqual(1, 2)
         self.wd = wd
+        logoutput = LogOutput()
+        logoutput.logOutput('D:/testing/testfile/test_order_log.txt', 'test_order')
         return self.wd
 
     @classmethod
@@ -591,6 +596,6 @@ if __name__ == '__main__':
     # test.test_order_multiplequery(结束状态='boss结束', 开始时间='2020-07-13 00:00:00，2020-07-14 00:00:00', 用户类型='非员工')
     # test.test_order_multiplequery(结束状态='超时结束')
     # test.test_order_multiplequery(订单状态='骑行中', 异常状态='无异常')
-    s = '结束状态：boss结束，开始时间：2020-07-13 00:00:00,2020-07-14 00:00:00，用户类型：非员工'
+    # s = '结束状态：boss结束，开始时间：2020-07-13 00:00:00,2020-07-14 00:00:00，用户类型：非员工'
     # s = test.str_to_dict(s)
-    test.test_order_multiplequery('test_order001', s, '')
+    # test.test_order_multiplequery('test_order001', s, '')
