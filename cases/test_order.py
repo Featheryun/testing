@@ -401,8 +401,6 @@ class Order_TestCase(unittest.TestCase):
             element = wd.find_element_by_id('createAt')
             element1 = wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]')
             ActionChains(wd).move_to_element(element).click(element1).perform()
-            # element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]'))
-            # element.click()
             msg = ''
             condition1 = ''
             quiry1 = ''
