@@ -241,9 +241,6 @@ class Payment_TestCase(unittest.TestCase):
                     elif condition == '发起时间':
                         time1 = wd.find_element_by_xpath(
                             '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[1]').text
-                        # time1 = datetime.date(*map(int, time1.split(' ')[0].split('-')))
-                        # starttime = datetime.date(*map(int, query.split(',')[0].split(' ')[0].split('-')))
-                        # endtime = datetime.date(*map(int, query.split(',')[1].split(' ')[0].split('-')))
                         time1 = datetime.datetime.strptime(time1, '%Y-%m-%d %H:%M:%S')
                         starttime = datetime.datetime.strptime(query.split(',')[0], '%Y-%m-%d %H:%M:%S')
                         endtime = datetime.datetime.strptime(query.split(',')[1], '%Y-%m-%d %H:%M:S')
@@ -254,12 +251,9 @@ class Payment_TestCase(unittest.TestCase):
                     elif condition == '成功时间':
                         time1 = wd.find_element_by_xpath(
                             '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div/table/tbody/tr[1]/td[2]').text
-                        # time1 = datetime.date(*map(int, time1.split(' ')[0].split('-')))
                         time1 = datetime.datetime.strptime(time1, '%Y-%m-%d %H:%M:%S')
                         starttime = datetime.datetime.strptime(query.split(',')[0], '%Y-%m-%d %H:%M:%S')
-                        # starttime = datetime.date(*map(int, query.split(',')[0].split(' ')[0].split('-')))
                         endtime = datetime.datetime.strptime(query.split(',')[1], '%Y-%m-%d %H:%M:S')
-                        # endtime = datetime.date(*map(int, query.split(',')[1].split(' ')[0].split('-')))
                         if time1 >= starttime and time1 <= endtime:
                             msg = msg + ';' + query
                         else:

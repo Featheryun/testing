@@ -220,12 +220,9 @@ class Userinfo_TestCase(unittest.TestCase):
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[4]/div[1]').click()
                 time.sleep(0.5)
                 wd.find_element_by_xpath('//*[@id="/cif$Menu"]/li[1]').click()
-            # time.sleep(1)
-            # wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div/div[4]/span/button[2]').click()
                 wd.implicitly_wait(5)
                 element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_link_text('展开'))
                 wd.execute_script('arguments[0].click();', element)     # 元素被覆盖
-            # wd.find_element_by_link_text('展开').click()
             msg = ''
             condition1 = ''
             username1 = ''
@@ -244,13 +241,11 @@ class Userinfo_TestCase(unittest.TestCase):
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]/div').click()
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[5]/td[5]/div').click()
                     WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[1]/div[1]/div/input')).send_keys(19*Keys.BACK_SPACE)
-                    # wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(19*Keys.BACK_SPACE)
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(startAt)
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[2]/div[1]/div/input').click()
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(19*Keys.BACK_SPACE)
                     wd.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(endAt)
                     ActionChains(wd).move_by_offset(300, 100).click().perform()
-                    # time.sleep(1)
 
                 elif condition == '账号状态':
                     wd.find_element_by_xpath('//*[@id="status"]/div/div').click()
@@ -282,7 +277,6 @@ class Userinfo_TestCase(unittest.TestCase):
                     elif username == '实名失败':
                         wd.switch_to.active_element.send_keys(2*Keys.DOWN)
                     wd.switch_to.active_element.send_keys(Keys.ENTER)
-                    # wd.find_element_by_xpath('//*[@id="realNameStatus"]/div/div/div').send_keys(Keys.ENTER)
                 elif condition == '违约状态':
                     element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="breachFlag"]/div/div'))
                     element.click()
@@ -340,24 +334,22 @@ class Userinfo_TestCase(unittest.TestCase):
                             msg = msg + ';' + '无待处理违约'
                     elif condition == '注册时间':
                         msg1 = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[3]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[16]').text
-                        time1 = msg1.split(' ')[0].split('-')
-                        date1 = datetime.date(*map(int, time1))
+                        date1 = datetime.datetime.strptime(msg1, '%Y-%m-%d %H:%M:S')
                         staAt = username.split(',')[0]
                         endAt = username.split(',')[1]
-                        staAt = datetime.date(*map(int, staAt.split(' ')[0].split('-')))
-                        endAt = datetime.date(*map(int, endAt.split(' ')[0].split('-')))
+                        staAt = datetime.datetime.strptime(staAt, '%Y-%m-%d %H:%M:S')
+                        endAt = datetime.datetime.strptime(endAt, '%Y-%m-%d %H:%M:S')
                         if staAt <= date1 and endAt >= date1:
                             msg = msg + ';' + username
                         else:
                             msg = msg + ';' + ''
                     elif condition == '用车日期':
                         msg1 = wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[3]/div[2]/div/div/div/div/div/div/table/tbody/tr[1]/td[7]').text
-                        time1 = msg1.split(' ')[0].split('-')
-                        date1 = datetime.date(*map(int, time1))
+                        date1 = datetime.datetime.strptime(msg1, '%Y-%m-%d %H:%M:S')
                         staAt = username.split(',')[0]
                         endAt = username.split(',')[1]
-                        staAt = datetime.date(*map(int, staAt.split(' ')[0].split('-')))
-                        endAt = datetime.date(*map(int, endAt.split(' ')[0].split('-')))
+                        staAt = datetime.datetime.strptime(staAt, '%Y-%m-%d %H:%M:S')
+                        endAt = datetime.datetime.strptime(endAt, '%Y-%m-%d %H:%M:S')
                         if staAt <= date1 and endAt >= date1:
                             msg = msg + ';' + username
                         else:

@@ -488,9 +488,6 @@ class Order_TestCase(unittest.TestCase):
                         '/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(endtime)
                     wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[2]/div/a[2]').click()
                 wd.implicitly_wait(5)
-                # wd.find_element_by_xpath(
-                #     '//*[@id="root"]/div/div/div/section/section/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[2]').click()
-                # time.sleep(8)
                 quiry1 = quiry1 + ';' + quiry
                 condition1 = condition1 + ';' + condition
             time.sleep(0.5)
@@ -544,11 +541,8 @@ class Order_TestCase(unittest.TestCase):
                     elif '开始时间' == condition:
                         msg1 = wd.find_element_by_xpath(
                             '//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div/div[1]/div/table/tbody/tr[1]/td[10]').text
-                        # msg1 = datetime.date(*map(int, msg1.split(' ')[0].split('-')))
                         msg1 = datetime.datetime.strptime(msg1, '%Y-%m-%d %H:%M:%S')
-                        # starttime = datetime.date(*map(int, starttime.split(' ')[0].split('-')))
                         starttime = datetime.datetime.strptime(starttime, '%Y-%m-%d %H:%M:%S')
-                        # endtime = datetime.date(*map(int, endtime.split(' ')[0].split('-')))
                         endtime = datetime.datetime.strptime(endtime, '%Y-%m-%d %H:%M:%S')
                         if msg1 >= starttime and msg1 <= endtime:
                             msg = msg + ';' + quiry
