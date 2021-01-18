@@ -282,7 +282,7 @@ class Payment_TestCase(unittest.TestCase):
             self.assertEqual(1, 2)
         self.wd = wd
         logoutput = LogOutput()
-        logoutput.logOutput('D:/testing/testfile/test_payment_log.txt', 'test_payment')
+        logoutput.logOutput('D:/testing/testfile/', 'test_payment')
         return self.wd
 
     @classmethod

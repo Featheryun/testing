@@ -373,7 +373,7 @@ class Userinfo_TestCase(unittest.TestCase):
         self.wd = wd
         f.close()
         logoutput = LogOutput()
-        logoutput.logOutput('D:/testing/testfile/test_userinfo_log.txt', 'test_userinfo')
+        logoutput.logOutput('D:/testing/testfile/', 'test_userinfo')
         return self.wd
 
     @classmethod

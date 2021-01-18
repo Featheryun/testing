@@ -381,6 +381,7 @@ class Order_TestCase(unittest.TestCase):
         return cls.wd
 
     @data(*orderdatas)
+    # @unittest.skip
     def test_order(self, case):
         data = str_to_dict(case[4])
         caseid = case[0]
@@ -548,8 +549,8 @@ class Order_TestCase(unittest.TestCase):
                             msg = msg + ';' + ''
             else:
                 msg = msg + ';' + ''
-            print(msg)
-            print(quiry1)
+            # print(msg)
+            # print(quiry1)
             if quiry1 in msg:
                 print(caseid + ':' + condition1[1:] + '=>' + quiry1[1:] + '=======================>sucess', file=f)
                 self.assertEqual(1, 1)
@@ -565,7 +566,7 @@ class Order_TestCase(unittest.TestCase):
             self.assertEqual(1, 2)
         self.wd = wd
         logoutput = LogOutput()
-        logoutput.logOutput('D:/testing/testfile/test_order_log.txt', 'test_order')
+        logoutput.logOutput('D:/testing/testfile/', 'test_order')
         return self.wd
 
     @classmethod
