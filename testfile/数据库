@@ -1,0 +1,137 @@
+1、数据库的类型有哪些？
+
+MyIASM、InnoDB、HEAP、ISAM、MERGE、DED及Gemen
+
+2、说一说你能想到的sql语句优化，至少5种
+
+（1）避免select *，将需要查询的字段列出来
+
+（2）使用连接join来代替子查询
+
+（3）拆分大的delete或insert语句
+
+（4）使用limit对查询结果进行限定
+
+（5）用exists代替in是一个好的选择
+
+（6）尽量避免在where子句中使用or来连接条件，否则将导致引擎放弃使用索引而进行全表扫描
+
+（7）尽量避免在where子句中进行null值判断
+
+（8）尽量避免在where子句中使用！=或<>操作符
+
+（9）有大量重复且经常有范围查询（between，>=，<=）和order by  group by发生列，可以考虑建立聚集索引
+
+（10）经常存取多列，且每列都要包含有重复值，可以考虑建立组合索引
+
+（11）组合索引要尽量的使用关键字查询形成索引覆盖
+
+3、说一说你能想到的表结构的优化，至少5种
+
+（1）选择正确的存储引擎
+
+（2）使用可存下数据的最小的数据类型
+
+（3）使用简单的数据类型，整型比字符处理开销更小
+
+（4）使用合理的字段属性长度，固定长度表会更快
+
+（5）使用enum、char而不是varchar
+
+（6）尽可能使用not null定义字段
+
+（7）给频繁使用和查询的字段建立合适的索引
+
+4、说几个mysql你常用的函数
+
+sum、count、avg、max、min
+
+5、说几个你除了增删查改之外在mysql中常用的命令
+
+Explain、describe、show、truncate（清空）
+
+6、说几个除了增删查改之外常用的关键字
+
+distinct、limit、offset、order by、union、union all、between、group by
+
+7、查询语句格式
+
+SELECT 列名1， 列名2...FROM 表名 WHERE 条件
+
+例子：查询成绩前5名
+
+select top 5 学号，学生，成绩 from 成绩表 where 课程名 order by desc，学号
+
+8、多表查询
+
+列子：select s.id,s.name,m.mark from student as s,mark as m where m.stu_id = s.id
+
+内连接
+
+select s.id,s.name,m.mark from student as s inner join mark as m on m.stu_id = s.id
+
+左连接（以左表为标准）
+
+select s.id,s.name,m.mark from student as s left join mark as m on m.stu_id = s.id
+
+右连接（以右表为标准）
+
+9、MyISAM与InnoDB的区别
+
+MyISAM：支持全文索引，不支持事务，崩溃恢复支持不好
+
+InnoDB：支持事务、不支持索引，5.6版本后开始支持，性能快
+
+10、什么是事务
+
+一个SQL语句就是一个事务
+
+开启事务：start transaction，有问题就rollback，没有问题就commit
+
+事务可以保证一组sql语句要么都成功要么都失败
+
+事务具有原子性、隔离性、一致性、持久性
+
+11、视图
+
+其实就是当作一个查询表来使用
+
+12、索引
+
+索引在提供查找速度的同时，降低增删改的速度，全文索引可以提高模糊查询
+
+13、mysql优化之开启慢查询日志记录慢的语句
+
+（1）set global log_slow_queries= on
+
+（2）设置时间：set long_query_time = 0.5
+
+（3）在另一命令行里进入mysql data里，输入tail -f localhost_slow.log，进行查看
+
+14、mysql优化之分析慢查询的原因
+
+（1）打开profiling性能指标set profiling
+
+（2）show profiles
+
+         show profile for query id(查看某条命令的具体性能)
+
+15、mysql优化之数据库缓存关闭
+
+（1）show variables like '%cache%'
+
+（2）query_cache_size = 0 为关闭，有数据为打开
+
+16、MySQL默认的端口号是3306，若端口号被占用，应该去哪个文件修改
+
+linux：my.cnf，windows：my.ini
+
+tomcat的默认端口是8080，如何修改tomcat的端口号
+
+修改tomcat\conf\server.xml文件中Connctor port的值
+
+17、建立索引的时候要注意什么
+
+（1）避免使用过多的索引
+
+（2）更新太频繁字段不适合建立索引
