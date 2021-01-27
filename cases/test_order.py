@@ -549,8 +549,8 @@ class Order_TestCase(unittest.TestCase):
                             msg = msg + ';' + ''
             else:
                 msg = msg + ';' + ''
-            # print(msg)
-            # print(quiry1)
+            print(msg[1:])
+            print(quiry1[1:])
             if quiry1 in msg:
                 print(caseid + ':' + condition1[1:] + '=>' + quiry1[1:] + '=======================>sucess', file=f)
                 self.assertEqual(1, 1)
