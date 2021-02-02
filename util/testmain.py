@@ -1,9 +1,13 @@
 import unittest
 from HTMLTestRunner import HTMLTestRunner
 import os
+import sys
 from BeautifulReport import BeautifulReport
 import time
 datedemo = time.strftime('%Y-%m-%d-%H')
+current_directory = os.path.dirname(os.path.abspath(__file__))
+root_path = os.path.abspath(os.path.dirname(current_directory) + os.path.sep + ".")
+sys.path.append(root_path)
 # pathro2 = os.path.abspath(os.path.dirname(__file__))+datedemo+'.html'
 discover = unittest.defaultTestLoader.discover('D:\\testing\\cases\\', pattern="test_*.py")
 if __name__ == "__main__":

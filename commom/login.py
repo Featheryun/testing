@@ -60,6 +60,7 @@ if __name__ == '__main__':
         name, value = i.strip().split('=', 1)
         cookie1[name] = value
     cookie = {}
+    # print(cookie1)
     wd.get('https://www.jd.com/')
     for name, value in cookie1.items():
         cookie = {'domain': 'jd.com', 'name': name, 'value': value}
