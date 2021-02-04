@@ -7159,39 +7159,25 @@ body.skin-3 {
 
 
     var resultData = {
-    "testPass": 6,
+    "testPass": 7,
     "testResult": [
         {
             "className": "Order_TestCase",
             "methodName": "test_order_1___order001___6_0__6_0__6_0___结束状态_超时结束_开始时间_2020_10_13_00_00_00_2020_10_14_00_00_00_用户类型_非员工___6_0_",
             "description": null,
-            "spendTime": "7.49 s",
-            "status": "失败",
+            "spendTime": "4.89 s",
+            "status": "成功",
             "log": [
-                "",
-                "Traceback (most recent call last):\n",
-                "  File \"D:\\testing\\cases\\test_order.py\", line 476, in test_order\n    '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]').click()\n",
-                "  File \"D:\\python3.7\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 394, in find_element_by_xpath\n    return self.find_element(by=By.XPATH, value=xpath)\n",
-                "  File \"D:\\python3.7\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 978, in find_element\n    'value': value})['value']\n",
-                "  File \"D:\\python3.7\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 321, in execute\n    self.error_handler.check_response(response)\n",
-                "  File \"D:\\python3.7\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 242, in check_response\n    raise exception_class(message, screen, stacktrace)\n",
-                "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]\"}\n  (Session info: chrome=88.0.4324.104)\n\n",
-                "\nDuring handling of the above exception, another exception occurred:\n\n",
-                "Traceback (most recent call last):\n",
-                "  File \"D:\\python3.7\\lib\\unittest\\case.py\", line 59, in testPartExecutor\n    yield\n",
-                "  File \"D:\\python3.7\\lib\\unittest\\case.py\", line 615, in run\n    testMethod()\n",
-                "  File \"D:\\python3.7\\lib\\ddt.py\", line 182, in wrapper\n    return func(self, *args, **kwargs)\n",
-                "  File \"D:\\testing\\cases\\test_order.py\", line 564, in test_order\n    self.assertEqual(1, 2)\n",
-                "  File \"D:\\python3.7\\lib\\unittest\\case.py\", line 839, in assertEqual\n    assertion_func(first, second, msg=msg)\n",
-                "  File \"D:\\python3.7\\lib\\unittest\\case.py\", line 832, in _baseAssertEqual\n    raise self.failureException(msg)\n",
-                "AssertionError: 1 != 2\n"
+                "超时结束;2020-10-13 00:00:00,2020-10-14 00:00:00;非员工",
+                "超时结束;2020-10-13 00:00:00,2020-10-14 00:00:00;非员工",
+                ""
             ]
         },
         {
             "className": "Payment_TestCase",
             "methodName": "test_payment_1___payment001___7_0__7_0__7_0___用户姓名_马平_发起时间_2021_01_09_00_00_00_2021_01_15_23_59_59___7_0_",
             "description": null,
-            "spendTime": "7.79 s",
+            "spendTime": "7.95 s",
             "status": "成功",
             "log": [
                 "1",
@@ -7203,7 +7189,7 @@ body.skin-3 {
             "className": "Userinfo_TestCase",
             "methodName": "test_info_1___userinfo001___1_0__1_0__1_0___信息查询_袁勇___1_0_",
             "description": null,
-            "spendTime": "6.92 s",
+            "spendTime": "7.01 s",
             "status": "成功",
             "log": [
                 ""
@@ -7213,7 +7199,7 @@ body.skin-3 {
             "className": "Userinfo_TestCase",
             "methodName": "test_info_2___userinfo002___2_0__2_0__2_0___用户ID_312507___2_0_",
             "description": null,
-            "spendTime": "6.03 s",
+            "spendTime": "6.05 s",
             "status": "成功",
             "log": [
                 ""
@@ -7223,7 +7209,7 @@ body.skin-3 {
             "className": "Userinfo_TestCase",
             "methodName": "test_info_3___userinfo003___3_0__3_0__3_0___注册时间_2020_12_22_00_00_00_2020_12_22_23_59_59_账号状态_正常___3_0_",
             "description": null,
-            "spendTime": "4.47 s",
+            "spendTime": "4.39 s",
             "status": "成功",
             "log": [
                 ""
@@ -7233,7 +7219,7 @@ body.skin-3 {
             "className": "Userinfo_TestCase",
             "methodName": "test_info_4___userinfo004___4_0__4_0__4_0___实名认证_已实名___4_0_",
             "description": null,
-            "spendTime": "3.65 s",
+            "spendTime": "3.63 s",
             "status": "成功",
             "log": [
                 ""
@@ -7243,7 +7229,7 @@ body.skin-3 {
             "className": "Userinfo_TestCase",
             "methodName": "test_info_5___userinfo005___5_0__5_0__5_0___信息查询_袁勇_用户ID_312507___5_0_",
             "description": null,
-            "spendTime": "3.0 s",
+            "spendTime": "3.04 s",
             "status": "成功",
             "log": [
                 ""
@@ -7252,9 +7238,9 @@ body.skin-3 {
     ],
     "testName": "测试报告",
     "testAll": 7,
-    "testFail": 1,
-    "beginTime": "2021-02-02 14:56:23",
-    "totalTime": "81s",
+    "testFail": 0,
+    "beginTime": "2021-02-03 15:39:47",
+    "totalTime": "77s",
     "testSkip": 0,
     "testError": 0
 };

@@ -403,7 +403,7 @@ class Order_TestCase(unittest.TestCase):
                 wd.implicitly_wait(10)
             element = wd.find_element_by_id('createAt')
             element1 = wd.find_element_by_xpath('//*[@id="createAt"]/span/i[1]')
-            ActionChains(wd).move_to_element(element).click(element1).perform()
+            ActionChains(wd).move_to_element(element).click(element1).perform()     # 点掉日期后面那个叉的按钮
             msg = ''
             condition1 = ''
             quiry1 = ''
@@ -473,20 +473,18 @@ class Order_TestCase(unittest.TestCase):
                     starttime = quiry.split(',')[0]
                     endtime = quiry.split(',')[1]
                     wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[3]').click()
+                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[5]').click()
                     wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[5]/td[5]').click()
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(
-                        19 * Keys.BACK_SPACE)
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(starttime)
-                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').click()
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(
-                        19 * Keys.BACK_SPACE)
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(endtime)
+                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[5]/td[7]').click()
+                    # wd.find_element_by_class_name('ant-calender-input')[0].send_keys(19 * Keys.BACK_SPACE)
+                    # wd.find_element_by_class_name('ant-calendar-input')[0].send_keys(starttime)
+                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(19 * Keys.BACK_SPACE)
+                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(starttime)
+                    # wd.find_element_by_xpath("//input[@placeholder='结束时间']").click()
+                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(19 * Keys.BACK_SPACE)
+                    wd.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input").send_keys(endtime)
+                    # wd.find_element_by_class_name('ant-calender-input')[1].send_keys(19 * Keys.BACK_SPACE)
+                    # wd.find_element_by_class_name('ant-calendar-input')[1].send_keys(starttime)
                     wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[2]/div/a[2]').click()
                 wd.implicitly_wait(5)
                 quiry1 = quiry1 + ';' + quiry
