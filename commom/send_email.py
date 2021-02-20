@@ -30,15 +30,15 @@ def send_email(file):
     att1["Content-Disposition"] = 'attachment;filename="test.html"'
     msg.attach(att1)
     # print(msg)
-    # try:
-    smtp = smtplib.SMTP()
-    smtp.connect(smtpserver)
-    smtp.login(sender, password)
-    smtp.sendmail(sender, receiver, msg.as_string())
-    smtp.quit()
-    print("邮件发送成功")
-    # except smtplib.SMTPException:
-    #     print("Error:无法发邮件")
+    try:
+        smtp = smtplib.SMTP()
+        smtp.connect(smtpserver)
+        smtp.login(sender, password)
+        smtp.sendmail(sender, receiver, msg.as_string())
+        smtp.quit()
+        print("邮件发送成功")
+    except smtplib.SMTPException:
+        print("Error:无法发邮件")
 
 
 def job():
