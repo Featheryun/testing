@@ -468,30 +468,33 @@ class Order_TestCase(unittest.TestCase):
                         wd.switch_to.active_element.send_keys(Keys.DOWN)
                     wd.switch_to.active_element.send_keys(Keys.ENTER)
                 elif condition == '开始时间':
-                    wd.find_element_by_id('createAt').click()
-                    time.sleep(0.5)
                     starttime = quiry.split(',')[0]
                     endtime = quiry.split(',')[1]
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[5]').click()
-                    wd.find_element_by_xpath(
-                        '/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[2]/div[2]/table/tbody/tr[5]/td[7]').click()
-                    # wd.find_element_by_class_name('ant-calender-input')[0].send_keys(19 * Keys.BACK_SPACE)
-                    # wd.find_element_by_class_name('ant-calendar-input')[0].send_keys(starttime)
-                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(19 * Keys.BACK_SPACE)
-                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[1]/div[1]/div/input').send_keys(starttime)
-                    # wd.find_element_by_xpath("//input[@placeholder='结束时间']").click()
-                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input').send_keys(19 * Keys.BACK_SPACE)
-                    wd.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div[1]/div[2]/div[1]/div/input").send_keys(endtime)
-                    # wd.find_element_by_class_name('ant-calender-input')[1].send_keys(19 * Keys.BACK_SPACE)
-                    # wd.find_element_by_class_name('ant-calendar-input')[1].send_keys(starttime)
-                    wd.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div[2]/div/a[2]').click()
+                    # element =wd.find_element_by_xpath("//input[@placeholder='开始日期']")
+                    # wd.execute_script("arguments[0].removeAttribute('readonly')", element)
+                    # element.clear()
+                    # element.send_keys(starttime)
+                    # time.sleep(5)
+                    # element = wd.find_element_by_xpath("//input[@placeholder='结束日期']")
+                    # wd.execute_script("arguments[0].removeAttribute('readonly')", element)
+                    # element.clear()
+                    # element.send_keys(endtime)
+                    # time.sleep(5)
+                    wd.find_element_by_id('createAt').click()
+                    time.sleep(0.5)
+                    wd.find_element_by_xpath("//*[@class='ant-calendar-tbody'][1]/tr[1]/td[1]").click()
+                    wd.find_element_by_xpath("//*[@class='ant-calendar-tbody'][1]/tr[1]/td[7]").click()
+                    element = wd.find_element_by_xpath("//input[@class='ant-calendar-input '][1]")
+                    element.send_keys(19 * Keys.BACK_SPACE)
+                    element.send_keys(starttime)
+                    wd.find_element_by_xpath("//input[@class='ant-calendar-input ' and @placeholder='结束日期']").send_keys(19 * Keys.BACK_SPACE)
+                    wd.find_element_by_xpath("//input[@class='ant-calendar-input ' and @placeholder='结束日期']").send_keys(endtime)
+                    wd.find_element_by_xpath("//*[@class='ant-calendar-ok-btn'][1]").click()
                 wd.implicitly_wait(5)
                 quiry1 = quiry1 + ';' + quiry
                 condition1 = condition1 + ';' + condition
-            time.sleep(0.5)
-            wd.find_element_by_xpath(
-                '//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[2]/div/div/div/div/div/div/div[1]/form/div[5]/div/button[1]').click()
+            time.sleep(2)
+            wd.find_element_by_xpath("//button[@type='submit']").click()
             time.sleep(0.5)
             try:
                 wd.find_element_by_xpath(
