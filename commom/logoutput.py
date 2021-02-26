@@ -6,7 +6,7 @@ class LogOutput():
     def logOutput(self, log_dir, name_project):
         now = datetime.datetime.now()
         now = time.strftime('%Y-%m-%d', time.localtime())
-        logging.basicConfig(level=logging.DEBUG,
+        logging.basicConfig(level=logging.WARNING,
                             format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
                             datefmt='%a, %d %b %Y %H:%M:%S',
                             filename=log_dir + now + '-' + name_project + '_log.log',
