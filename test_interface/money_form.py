@@ -27,6 +27,29 @@ def order_paging(datas):
         print('error')
 
 
+def order_loss(datas):
+    startAt = datas.split(',')[0]
+    endAt = datas.split(',')[1]
+    regionId = datas.split(',')[2]
+    datas = {'beginAt': startAt, 'endAt': endAt, 'regionId': regionId, 'page': {'size': 100000, 'current': 1, 'total': 0}}
+    try:
+        response = requests.post(url='http://boss.nm666.cn/api/v1/report/order_loss/paging', headers=headers, data=json.dumps(datas))
+        result = response.json()['result']
+        # print(result)
+        a = 0
+        for i in result:
+            a = a + i['unlockTimes']
+        print(round(a, 2))
+        a = round(a, 2)
+        return a
+    except requests.exceptions.ConnectionError:
+        print('连接问题')
+    except requests.exceptions.ChunkedEncodingError:
+        print('chuncked编码问题')
+    except:
+        print('error')
+
+
 def makeup_paging(datas):
     month = datas.split(',')[0]
     regionId = datas.split(',')[1]
@@ -74,4 +97,5 @@ if __name__ == '__main__':
     # assert makeup_amounts == makeup_amountss
     # order_paging('2020-12-10 00:00:00,2020-12-12 23:44:11,511526')
     # amount = makeup_paging('12,511526,2020')
-    monthorder_paging('12,522526,2020')
+    # monthorder_paging('12,522526,2020')
+    print(order_loss('2021-03-15 00:00:00, 2021-03-15 23:59:59, 511526'))

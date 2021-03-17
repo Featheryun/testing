@@ -16,7 +16,7 @@ class Test_tip:
         zone = Zone_change()
         wd = zone.zone_change('翠屏区', wd)
         time.sleep(1)
-        if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/举报管理/举报明细':
+        if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/举报管理/举报明细':
             # wd.find_element_by_css_selector('#root > div > div > div > section > aside > div > ul > li:nth-child(5) > div.ant-menu-submenu-title').click()
             wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[5]/div').click()
             time.sleep(1)

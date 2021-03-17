@@ -23,7 +23,7 @@ class Test_shortorder:
             msg = ''
             condition1 = ''
             quriy1 = ''
-            if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/订单管理/短时订单':
+            if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/订单管理/短时订单':
                 wd.implicitly_wait(5)
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[6]/div').click()
                 time.sleep(0.5)

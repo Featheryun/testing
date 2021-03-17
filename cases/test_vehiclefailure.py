@@ -21,7 +21,7 @@ class Test_vehiclefailure:
             zone_change = Zone_change()
             wd = zone_change.zone_change('翠屏区', wd)
             time.sleep(1)
-            if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/用户管理/车辆报障':
+            if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/用户管理/车辆报障':
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[4]/div[1]').click()
                 time.sleep(1)
                 wd.find_element_by_xpath('//*[@id="/cif$Menu"]/li[2]/a').click()

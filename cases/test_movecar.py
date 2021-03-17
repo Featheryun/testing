@@ -20,7 +20,7 @@ class Test_movecar:
             wd = login.login('15095859543', '123456')
             zone = Zone_change()
             wd = zone.zone_change('巴中市', wd)
-            if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/挪车管理/正在挪车':
+            if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/挪车管理/正在挪车':
                 time.sleep(1.5)
                 wd.find_element_by_css_selector('#root > div > div > div > section > aside > div > ul > li:nth-child(10) > div').click()
                 element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="/bike/moving$Menu"]/li[2]'))

@@ -149,7 +149,7 @@ class Payment_TestCase(unittest.TestCase):
             condition1 = ''
             query1 = ''
             if wd.find_element_by_xpath(
-                    '//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[1]/div/div/div[1]').text not in '首页/财务管理/支付明细':
+                    '//*[@class="ant-breadcrumb"][1]').text not in '首页/财务管理/支付明细':
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[13]').click()
                 time.sleep(0.5)
                 element = WebDriverWait(wd, 10).until(lambda driver: wd.find_element_by_xpath('//*[@id="/payment$Menu"]/li'))

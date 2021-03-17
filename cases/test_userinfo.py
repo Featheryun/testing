@@ -216,7 +216,7 @@ class Userinfo_TestCase(unittest.TestCase):
         f = open('D:/testing/testfile/result1.txt', 'a')
 
         try:
-            if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/div/main/div/div/div[1]/div/div/div[1]').text not in '首页/用户管理/用户信息':
+            if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/用户管理/用户信息':
                 wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[4]/div[1]').click()
                 time.sleep(0.5)
                 wd.find_element_by_xpath('//*[@id="/cif$Menu"]/li[1]').click()

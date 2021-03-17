@@ -7,7 +7,7 @@ from util.excel_read import excel_read
 class Terminal_inqury:
     def terminal_inqury(self, data, wd):
         f = open('D:/testing/testfile/terminal_inqury_result.txt', 'a')
-        if wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/section/main/div/div/div[1]/div/div/div[1]').text not in '首页/IOT管理/车辆':
+        if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/IOT管理/车辆':
             wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[2]/div[1]').click()
             time.sleep(1)
             wd.find_element_by_xpath('//*[@id="/iot$Menu"]/li[8]/a').click()

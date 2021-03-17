@@ -5,8 +5,12 @@ from BeautifulReport import BeautifulReport
 import time
 
 datedemo = time.strftime('%Y-%m-%d-%H')
+# print(os.path.abspath(__file__))
+# print(os.path.dirname(__file__))
 current_directory = os.path.dirname(os.path.abspath(__file__))
+# print(current_directory)
 root_path = os.path.abspath(os.path.dirname(current_directory) + os.path.sep + ".")
+# print(root_path)
 sys.path.append(root_path)
 from commom.send_email import send_email
 from commom.logoutput import LogOutput
