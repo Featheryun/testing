@@ -195,6 +195,7 @@ class Userinfo_TestCase(unittest.TestCase):
     for i in datas1:
         if 'userinfo' in i[0]:
             userinfodatas.append(i)
+
     @classmethod
     def setUpClass(cls):
         try:
@@ -203,9 +204,9 @@ class Userinfo_TestCase(unittest.TestCase):
             wd.implicitly_wait(5)
             zone_chang = Zone_change()
             cls.wd = zone_chang.zone_change('珙县', wd)
+            return cls.wd
         except:
             print('error')
-        return cls.wd
 
     @data(*userinfodatas)
     def test_info(self, case):

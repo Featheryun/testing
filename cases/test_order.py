@@ -394,8 +394,7 @@ class Order_TestCase(unittest.TestCase):
             starttime = ''
             endtime = ''
             if wd.find_element_by_xpath('//*[@class="ant-breadcrumb"][1]').text not in '首页/订单管理/订单明细':
-                wd.find_element_by_css_selector(
-                    '#root > div > div > div > section > aside > div > ul > li:nth-child(6) > div.ant-menu-submenu-title').click()
+                wd.find_element_by_xpath('//*[@id="root"]/div/div/div/section/aside/div/ul/li[6]/div').click()
                 time.sleep(0.5)
                 element = WebDriverWait(wd, 10).until(
                     lambda driver: wd.find_element_by_xpath('//*[@id="/order$Menu"]/li[1]'))
